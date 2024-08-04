@@ -59,16 +59,9 @@ class formValidation {
         }
 
       }
-      else if (input.type == 'text' && input.id != 'sku' && input.value != '') {
-        const textOnlyRegex = /^[a-zA-Z\s]*$/; //regular expression checking for text only, hence the name
-        var isTextOnly = textOnlyRegex.test(input.value);
-        if (!isTextOnly) {
-          isCorrect = false;
-          input.classList.toggle('is-invalid', !isTextOnly);
-        }
-      }
-      else if (input.type == 'text' && input.id == 'sku' && input.value != '') {
-        const skuPattern =/^[a-zA-Z0-9]+$/;//regular expression checking text and numbers for SKUs
+
+      else if (input.type == 'text' && input.value != '') {
+        const skuPattern =/^[a-zA-Z0-9]+$/;//regular expression checking text and numbers for SKUs and Names
         var isTextNumber = skuPattern.test(input.value);
         if (!isTextNumber) {
           isCorrect = false;
