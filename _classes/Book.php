@@ -43,7 +43,7 @@ class Book extends Product {
                     <h5 class="card-title">SKU: ' . htmlspecialchars($this->getSku()) . '</h5>
                     <strong><div class="card-title">Name: ' . htmlspecialchars($this->getName()) . '</strong></div>
                     <div class="card-text">Price: ' . htmlspecialchars($this->getPrice()). ' $' . '</div>
-                    <div class="card-text">' . Book::$attribute . ': ' . htmlspecialchars($this->getWeight()) . '</div>
+                    <div class="card-text">' . Book::$attribute . ': ' . htmlspecialchars($this->getWeight()) .' Kg' .'</div>
                 </div>
             </div>
         </div>';
