@@ -12,7 +12,7 @@
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-       <title>Leave Feedback</title>
+       <title>Scandiweb Test</title>
        <link rel="icon" href="circle-32.png" type="image/png">
 
 </head>
@@ -29,10 +29,10 @@
                      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul class="navbar-nav">
                                    <li class="nav-item">
-                                          <a href="add-product.php" class="btn btn-outline-success m-2">Add</a>
+                                          <a href="add-product.php" class="btn btn-outline-success m-2">ADD</a>
                                    </li>
                                    <li class="nav-item">
-                                          <button type="submit" class="btn btn-outline-danger m-2" onclick="document.getElementById('items-form').submit()" id='mass-deletion'>Mass Deletion</button>
+                                          <button type="submit" class="btn btn-outline-danger m-2" onclick="document.getElementById('items-form').submit()" id='delete-product-button'>MASS DELETE</button>
                                    </li>
                             </ul>
                      </div>
