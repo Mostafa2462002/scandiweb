@@ -80,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sku']) && isset($_POS
     }
     
     // Validate Name: Only letters and spaces
-    if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
-        $errors[] = 'Name must only contain letters and spaces.';
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $name)) {
+        $errors[] = 'Name must only contain letters and numbers.';
     }
     
     // Validate Price: Must be a non-negative number
