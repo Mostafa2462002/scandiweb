@@ -56,9 +56,9 @@ class Furniture extends Product {
                     <strong><div class="card-title">Name: ' . htmlspecialchars($this->getName()) . '</strong></div>
                     
                     <div class="card-text">Price: ' . htmlspecialchars($this->getPrice()) . ' $' . '</div>
-                    <div class="card-text">Width: ' . htmlspecialchars($this->getWidth()) . '</div>
-                    <div class="card-text">Height: ' . htmlspecialchars($this->getHeight()) . '</div>
-                    <div class="card-text">Lenght: ' . htmlspecialchars($this->getLength()) . '</div>
+                    <div class="card-text">Width: ' . htmlspecialchars($this->getWidth()) . ' CM'.'</div>
+                    <div class="card-text">Height: ' . htmlspecialchars($this->getHeight()) . ' CM'.'</div>
+                    <div class="card-text">Lenght: ' . htmlspecialchars($this->getLength()) .' CM'. '</div>
 
                 </div>
             </div>
