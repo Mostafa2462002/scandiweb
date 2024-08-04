@@ -43,7 +43,7 @@ class DVD extends Product {
                     <h5 class="card-title">SKU: ' . htmlspecialchars($this->getSku()) . '</h5>
                     <strong><div class="card-title">Name: ' . htmlspecialchars($this->getName()) . '</strong></div>
                     <div class="card-text">Price: ' . htmlspecialchars($this->getPrice()) . ' $' . '</div>
-                    <div class="card-text">' . DVD::$attribute . ': ' . htmlspecialchars($this->getSize()) . '</div>
+                    <div class="card-text">' . DVD::$attribute . ': ' . htmlspecialchars($this->getSize()).' MB' . '</div>
                 </div>
             </div>
         </div>';
