@@ -24,7 +24,7 @@ abstract class Product {
         $db = new DataBase();
         $conn = $db->getConnection();
         if ($conn) {
-            $query = 'SELECT SKU, NAME, PRICE, TYPE FROM PRODUCTS ORDER BY SKU';
+            $query = 'SELECT SKU, NAME, PRICE, TYPE FROM products ORDER BY SKU';
             $result = mysqli_query($conn, $query);
             $results = mysqli_fetch_all($result, MYSQLI_ASSOC);
             foreach ($results as $result) {
@@ -43,7 +43,7 @@ abstract class Product {
             $conn = $db->getConnection();
             $index = mysqli_real_escape_string($conn, $index); // Escape the index for SQL
 
-            $sql = "DELETE FROM PRODUCTS WHERE SKU = '$index'";
+            $sql = "DELETE FROM products WHERE SKU = '$index'";
             mysqli_query($conn, $sql);
 
             $conn->close();
