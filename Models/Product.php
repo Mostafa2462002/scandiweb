@@ -1,13 +1,8 @@
 <?php
+
 namespace App\Models;
 
 use App\Models\DataBase;
-
-
-use App\Models\Book;
-use App\Models\Furniture;
-use App\Models\DVD;
-
 
 abstract class Product
 {
@@ -26,10 +21,10 @@ abstract class Product
     }
 
     abstract protected function save(array $list): ?bool;
-    abstract protected function validate(array $list):bool;
-    abstract protected function sanitize(array &$list):array;
-    abstract protected function setProductData(array $list):void;
-    abstract protected function getProductData():array;
+    abstract protected function validate(array $list): bool;
+    abstract protected function sanitize(array &$list): array;
+    abstract protected function setProductData(array $list): void;
+    abstract protected function getProductData(): array;
 
     public static function getProducts(): array|null
     {
@@ -54,4 +49,3 @@ abstract class Product
         }
     }
 }
-

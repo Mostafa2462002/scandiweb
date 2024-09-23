@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 class DVD extends Product
 {
     protected $size;

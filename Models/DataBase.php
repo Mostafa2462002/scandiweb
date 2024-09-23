@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Dotenv\Dotenv;
-class DataBase {
+
+class DataBase
+{
     private $DB_SERVER;
     private $DB_USERNAME;
     private $DB_PASSWORD;
@@ -13,14 +15,16 @@ class DataBase {
     private static  $instance = null;
 
     // Private constructor to prevent instantiation
-    private function __construct() {
+    private function __construct()
+    {
         $this->loadEnv();
         $this->getConnection();
     }
 
     // Load environment variables
-    private function loadEnv() {
-        $dotenv = Dotenv::createImmutable(dirname(__DIR__)); 
+    private function loadEnv()
+    {
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__));
         $dotenv->load();
 
         $this->DB_SERVER = $_ENV['DB_SERVER'];
@@ -30,7 +34,8 @@ class DataBase {
     }
 
     // Get the single instance of the class
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -38,7 +43,8 @@ class DataBase {
     }
 
     // Get the database connection
-    public function getConnection() {
+    public function getConnection()
+    {
         if ($this->conn === null) {
             try {
                 $this->conn = new \mysqli($this->DB_SERVER, $this->DB_USERNAME, $this->DB_PASSWORD, $this->DB_NAME);
@@ -52,8 +58,4 @@ class DataBase {
         }
         return $this->conn;
     }
-
-  
 }
-
-?>
