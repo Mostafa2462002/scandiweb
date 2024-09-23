@@ -25,7 +25,7 @@ abstract class Product
         $this->conn = DataBase::getInstance()->getConnection();
     }
 
-    abstract protected function save(array $list);
+    abstract protected function save(array $list): ?bool;
     abstract protected function validate(array $list):bool;
     abstract protected function sanitize(array &$list):array;
     abstract protected function setProductData(array $list):void;

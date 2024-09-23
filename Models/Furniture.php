@@ -21,7 +21,7 @@ class Furniture extends Product
             $this->validate($list);
 
             if ($this->conn) {
-                $sql = "INSERT INTO PRODUCTS (sku, name, price, type, height, width, length) 
+                $sql = "INSERT INTO products (sku, name, price, type, height, width, length) 
                         VALUES (?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->conn->prepare($sql);
 

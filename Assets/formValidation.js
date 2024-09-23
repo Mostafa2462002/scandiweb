@@ -1,34 +1,13 @@
 class formValidation {
-  // every product will have sku, name, price
-  // but for scalability the types might increase, features of these types might increase aswell'
-  #sku;
-  #name;
-  #price;
-  constructor(name, sku, price) {
-    this.#name = name;
-    this.#price = price;
-    this.#sku = sku;
-  }
-  get name() {
-    return this.#name;
-  }
-
-  get sku() {
-    return this.#sku;
-  }
-
-  get price() {
-    return this.#price;
-  }
 
   static checkForm() {
-   
-    //this code copes with adding more types or more attributes to each type-- checks if inputs are empty
+
+    let errMsgHTML = '';
+    const alertContainer = document.getElementById('alert');
     var form = document.getElementById('product_form');
-    var sku = document.getElementById('sku');
-    var isValid = true;
-    var isCorrect = true;
-    var productType = document.getElementById('productType');
+    let isValid = true;
+    let isCorrect = true;
+    const productType = document.getElementById('productType');
     productType.classList.toggle('is-invalid', !productType.value);
     !productType.value ? isValid = false : null;
 
@@ -38,17 +17,12 @@ class formValidation {
       input.classList.toggle('is-invalid', areFieldsPresent);
 
       var correctInputLength = Number(input.value.length) > 30
-      if(correctInputLength)
-        {
-          isCorrect = false;
-          input.classList.toggle('is-invalid',correctInputLength);
-        }
-
-
-
-      
+      if (correctInputLength) {
+        isCorrect = false;
+        input.classList.toggle('is-invalid', correctInputLength);
+      }
     })
-    
+
     document.querySelectorAll('input').forEach(input => {
       if (input.type == 'number' && input.value != '') {
         var positiveNumberRegex = /^[0-9]+(\.[0-9]+)?$/; //regular expression checking for positive numbers, floats
@@ -57,23 +31,17 @@ class formValidation {
           isCorrect = false;
           input.classList.toggle('is-invalid', !isPositiveNumber);
         }
-
       }
-
       else if (input.type == 'text' && input.value != '') {
-        const skuPattern =/^[a-zA-Z0-9]+$/;//regular expression checking text and numbers for SKUs and Names
-        var isTextNumber = skuPattern.test(input.value);
+        const skuPattern = /^[a-zA-Z0-9]+$/;//regular expression checking text and numbers for SKUs and Names
+        let isTextNumber = skuPattern.test(input.value);
         if (!isTextNumber) {
           isCorrect = false;
           input.classList.toggle('is-invalid', !isTextNumber);
         }
-
       }
-    }
-    )
+    })
     
-
-    var errMsgHTML = '';
 
     if (!isValid) {
       errMsgHTML = `
@@ -82,10 +50,6 @@ class formValidation {
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       `
-
-
-
-
     }
     if (!isCorrect) {
       errMsgHTML = `
@@ -95,10 +59,9 @@ class formValidation {
        </div>
      `
     }
-
-    const alertContainer = document.getElementById('alert');
-    alertContainer.innerHTML = errMsgHTML;
     
+    alertContainer.innerHTML = errMsgHTML;
+
     if (isCorrect && isValid) {
       form.submit()
     }

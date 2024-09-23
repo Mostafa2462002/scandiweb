@@ -29,7 +29,7 @@ class DVD extends Product
                 $stmt->close();
             }
         } catch (\Exception $e) {
-            error_log(PHP_EOL . 'Line33-DVDModel: ' . $e->getMessage() . PHP_EOL, 3, 'errors.log');
+            error_log(PHP_EOL . 'Line32-DVDModel: ' . $e->getMessage() . PHP_EOL, 3, 'errors.log');
             return null;
         }
 

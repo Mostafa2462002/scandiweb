@@ -1,4 +1,4 @@
 .env
 vendor
-db-design
+db-design.sql
 errors

@@ -1,39 +1,38 @@
 <?php
+
 namespace App;
 
-require __DIR__. '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 
 use Bramus\Router\Router;
 use App\Controller\ProductController;
-use App\Models\Furniture;
 
 
 $router = new Router();
-$router->get('/',function(){
+$router->get('/', function () {
     ProductController::index();
 });
 
-$router->get('/index.php',function(){
-        header('Location:/scandiweb/');
-        ProductController::index();
+$router->get('/index.php', function () {
+    header('Location:/scandiweb/');
+    ProductController::index();
 });
 
-$router->get('/add-product',function(){
+$router->get('/add-product', function () {
     ProductController::addProduct();
 });
 
-$router->post('/delete', function(){
+$router->post('/delete', function () {
     $data = $_POST;
     ProductController::deleteProducts($data);
-    header('Location:/');
+    header('Location:/scandiweb/');
 });
 
-$router->post('/new-product', function(){
-    $data= $_POST;
+$router->post('/new-product', function () {
+    $data = $_POST;
     ProductController::create($data);
-    header('Location:/');
+    header('Location:/scandiweb/');
 });
 
 $router->run();
-
