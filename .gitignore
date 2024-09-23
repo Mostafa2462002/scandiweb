@@ -1,0 +1,4 @@
+.env
+vendor
+db-design
+errors

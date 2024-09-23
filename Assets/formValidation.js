@@ -96,14 +96,9 @@ class formValidation {
      `
     }
 
-    const alertContainer = document.getElementById('alerto');
+    const alertContainer = document.getElementById('alert');
     alertContainer.innerHTML = errMsgHTML;
-
-
-    // if correct and valid it'll submit the form
-
-
-
+    
     if (isCorrect && isValid) {
       form.submit()
     }

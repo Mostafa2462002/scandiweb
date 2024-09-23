@@ -1,30 +1,4 @@
-<?php
-try{
-include_once '_classes/DataBase.php';
-include_once '_classes/Product.php';
-  } 
-  catch (error $e){
-  }
-
-    ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <title>Product Form</title>
-  <link rel="icon" href="circle-32.png" type="image/png">
-
-</head>
-
-<body style="background-color:#ebebe0">
-  <nav class="navbar navbar-expand-sm navbar-light mb-5 mt-1">
+<nav class="navbar navbar-expand-sm navbar-light mb-5 mt-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,24 +12,19 @@ include_once '_classes/Product.php';
             <button  id="buttonno" type="button" class="btn btn-outline-primary m-2" onclick="formValidation.checkForm()">Save</button>
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-danger m-2" onclick="location.href='index.php'">Cancel</button>
+            <button type="button" class="btn btn-outline-danger m-2" onclick="location.href='/scandiweb/'">Cancel</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-
-
-  
-
   <div class="container ">
-    <div id="alerto" class="row justify-content-center">
+    <div id="alert" class="row justify-content-center">
+    </div>
         
-  </div>
-        </div>
+ 
     <div class="row justify-content-center">  
-    <form id="product_form" action="add-product.php" method="POST" class=" p-4 rounded shadow-sm col-4 " style="background-color:#f4e1c1" >  
+    <form id="product_form" action="/scandiweb/new-product/" method="POST" class=" p-4 rounded shadow-sm col-4 " style="background-color:#f4e1c1" >  
     <div class="mb-3">
         <label for="sku" class="form-label">SKU:</label>
         <input type="text" class="form-control" id="sku" name="sku">
@@ -104,20 +73,7 @@ include_once '_classes/Product.php';
     </form>
     </div>
   </div>
-
-
-
-
-<?php      ?>
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src='_classes/formValidation.js'></script>
+  </div>
  
 
-</body>
-</html>
+  <script src='assets/formValidation.js'></script>
