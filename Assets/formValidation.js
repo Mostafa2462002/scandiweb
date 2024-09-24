@@ -1,12 +1,21 @@
 class formValidation {
 
   static checkForm() {
-
-    let errMsgHTML = '';
     const alertContainer = document.getElementById('alert');
     var form = document.getElementById('product_form');
+
+    let isValid = this.checkRequiredFields(form);
+    let isCorrect = this.validateFieldValues(form);
+
+    this.updateAlertMessage(isValid, isCorrect, alertContainer);
+
+    if (isValid && isCorrect) {
+      form.submit();
+    }
+  }
+
+  static checkRequiredFields(form) {
     let isValid = true;
-    let isCorrect = true;
     const productType = document.getElementById('productType');
     productType.classList.toggle('is-invalid', !productType.value);
     !productType.value ? isValid = false : null;
@@ -15,33 +24,58 @@ class formValidation {
       var areFieldsPresent = input.parentElement.style.display !== 'none' && !input.value;
       areFieldsPresent ? isValid = false : null;
       input.classList.toggle('is-invalid', areFieldsPresent);
+    });
 
-      var correctInputLength = Number(input.value.length) > 30
+    return isValid;
+  }
+
+  static validateFieldValues(form) {
+    let isCorrect = true;
+
+    form.querySelectorAll('input').forEach(input => {
+      var correctInputLength = Number(input.value.length) > 30;
       if (correctInputLength) {
         isCorrect = false;
         input.classList.toggle('is-invalid', correctInputLength);
       }
-    })
+    });
 
     document.querySelectorAll('input').forEach(input => {
-      if (input.type == 'number' && input.value != '') {
-        var positiveNumberRegex = /^[0-9]+(\.[0-9]+)?$/; //regular expression checking for positive numbers, floats
-        var isPositiveNumber = positiveNumberRegex.test(input.value)
-        if (!isPositiveNumber) {
-          isCorrect = false;
-          input.classList.toggle('is-invalid', !isPositiveNumber);
-        }
+      if (input.type === 'number' && input.value !== '') {
+        isCorrect = this.validateNumberInput(input, isCorrect);
+      } else if (input.type === 'text' && input.value !== '') {
+        isCorrect = this.validateTextInput(input, isCorrect);
       }
-      else if (input.type == 'text' && input.value != '') {
-        const skuPattern = /^[a-zA-Z0-9]+$/;//regular expression checking text and numbers for SKUs and Names
-        let isTextNumber = skuPattern.test(input.value);
-        if (!isTextNumber) {
-          isCorrect = false;
-          input.classList.toggle('is-invalid', !isTextNumber);
-        }
-      }
-    })
-    
+    });
+
+    return isCorrect;
+  }
+
+  // Helper function to validate number input fields
+  static validateNumberInput(input, isCorrect) {
+    var positiveNumberRegex = /^[0-9]+(\.[0-9]+)?$/; // Regular expression for positive numbers
+    var isPositiveNumber = positiveNumberRegex.test(input.value);
+    if (!isPositiveNumber) {
+      isCorrect = false;
+      input.classList.toggle('is-invalid', !isPositiveNumber);
+    }
+    return isCorrect;
+  }
+
+  // Helper function to validate text input fields (for SKU, Name)
+  static validateTextInput(input, isCorrect) {
+    const skuPattern = /^[a-zA-Z0-9]+$/; // Regular expression for text and numbers
+    let isTextNumber = skuPattern.test(input.value);
+    if (!isTextNumber) {
+      isCorrect = false;
+      input.classList.toggle('is-invalid', !isTextNumber);
+    }
+    return isCorrect;
+  }
+
+  // Function to update the alert message
+  static updateAlertMessage(isValid, isCorrect, alertContainer) {
+    let errMsgHTML = '';
 
     if (!isValid) {
       errMsgHTML = `
@@ -49,27 +83,18 @@ class formValidation {
         Please, <strong>submit required data</strong>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-      `
-    }
-    if (!isCorrect) {
+      `;
+    } else if (!isCorrect) {
       errMsgHTML = `
-       <div class="alert alert-danger alert-dismissible fade show col-3" role="alert">
-       Please, <strong>provide the data of indicated type</strong>
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-       </div>
-     `
+        <div class="alert alert-danger alert-dismissible fade show col-3" role="alert">
+        Please, <strong>provide the data of indicated type</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
     }
-    
+
     alertContainer.innerHTML = errMsgHTML;
-
-    if (isCorrect && isValid) {
-      form.submit()
-    }
-
-
   }
-
-
 
   static showTypeAttributes() {
     let productType = document.getElementById('productType').value;
@@ -77,15 +102,11 @@ class formValidation {
       let type = document.getElementById(option.value);
       if (type) {
         type.style.display = 'none';
-        type.querySelectorAll('input').forEach(input => { input.value = '' })
-        if ((type.id == productType)) {
+        type.querySelectorAll('input').forEach(input => { input.value = '' });
+        if (type.id === productType) {
           type.style.display = 'block';
         }
       }
     });
-
-
   }
-
-
 }
